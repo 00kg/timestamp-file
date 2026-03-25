@@ -1,0 +1,76 @@
+{
+  "name": "timestamp-file",
+  "displayName": "timestamp-file",
+  "description": "Quickly create files with timestamp-based names in a specified directory.",
+  "version": "0.0.1",
+  "publisher": "00kg",
+  "repository": "https://github.com/00kg/timestamp-file.git",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "timestamp-file.newTimestampFile",
+        "title": "New Timestamp File"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "timestamp-file.newTimestampFile",
+        "key": "Ctrl+Shift+N",
+        "mac": "cmd+shift+n",
+        "when": "true"
+      }
+    ],
+    "configuration": {
+      "title": "TimestampFile",
+      "properties": {
+        "timestampFile.baseDirectory": {
+          "type": "string",
+          "default": "${workspaceFolder}",
+          "description": "Base root directory for storing timestamp files (e.g., `C:/Temp`, `${workspaceFolder}`, `${userHome}`, `{fileDirname}`)"
+        },
+        "timestampFile.subDirectory": {
+          "type": "string",
+          "default": ".inspiration",
+          "description": "Subdirectory name under the base directory (default: .inspiration)"
+        },
+        "timestampFile.fileExtension": {
+          "type": "string",
+          "default": ".txt",
+          "description": "File extension for generated timestamp files (e.g., .txt, .md, .json)"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "clean": "rimraf out",
+    "vscode:prepublish": "pnpm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "pnpm run compile && pnpm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.10",
+    "@types/node": "22.x",
+    "@types/sinon": "^21.0.0",
+    "@types/vscode": "^1.110.0",
+    "@vscode/test-cli": "^0.0.12",
+    "@vscode/test-electron": "^2.5.2",
+    "eslint": "^9.39.3",
+    "mocha": "^11.7.5",
+    "rimraf": "^6.1.3",
+    "sinon": "^21.0.3",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.56.1",
+    "vscode-test": "^1.6.1"
+  }
+}
