@@ -35,7 +35,7 @@ jobs:
         
 
       - name: Install vsce
-        run: pnpm install -g @vscode/vsce
+        run: pnpm setup && npm install -g @vscode/vsce
 
 
       - name: Package VS Code Extension
